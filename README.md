@@ -3,7 +3,7 @@
 
 ## Requirements and Goals of the System
 
-We will design the system with following requirement and design choice.
+We will design the system with following requirement and design choice. We will use Spring Boot, Redis, Apache Kafka, MySQL.
 
 ### We will build following web service
 
@@ -25,7 +25,23 @@ We will use **Apache Kafka** messaging for communicating between different servi
 7. After processing transaction, **Wallet Service** will produce message on **"TRANSACTION_COMPLETE"** topic with updated transaction status, We will configure **Notification Service** to listen on **"TRANSACTION_COMPLETE"** topic, so whenever transaction is updated for user, notification service will **send email** to user with transaction status.
 8. We will also configure **Redis for caching**
  
-### Kafka Flow
+### Apache Kafka Message Flow
 
 ![Kafka Flow](/KafkaDiagram/Kafka.png)
+
+### Project Requirements
+
+1. Install redis - brew install redis
+2. Install kafka - brew install kafka
+3. Start Zookeeper - Go to *[KAFKA_INSTALL_DIR]* and **run sh /bin/zookeeper-server-start.sh config/zookeeper.properties**
+4. Start Kafka server -  Go to *[KAFKA_INSTALL_DIR]* and **run sh bin/kafka-server-start.sh config/server.properties**
+
+
+### To see messages produced by Kafka, run following command
+
+**sh bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic "USER_CREATE"**
+
+
+    
+    
 
