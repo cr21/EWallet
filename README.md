@@ -25,3 +25,7 @@ We will use **Apache Kafka** messaging for communicating between different servi
 7. After processing transaction, **Wallet Service** will produce message on **"TRANSACTION_COMPLETE"** topic with updated transaction status, We will configure **Notification Service** to listen on **"TRANSACTION_COMPLETE"** topic, so whenever transaction is updated for user, notification service will **send email** to user with transaction status.
 8. We will also configure **Redis for caching**
  
+### Kafka Flow
+
+![Kafka Flow](/KafkaDiagram/Kafka.png)
+
